@@ -139,7 +139,7 @@ void TCPSender::tick(const size_t ms_since_last_tick) {
     // If there is any segment in flight, and the timer expires
     if (_bytes_in_flight != 0 && _time_elapsed >= _retransmission_timeout)
     {
-        // Retransimit the oldest segment
+        // Retransmit the oldest segment
         _segments_out.push(_in_flight_segments.front().second);
 
         if (_window_size > 0)

@@ -52,10 +52,10 @@ void TCPSender::fill_window() {
         // Because the payload_size is the maximum length available
         // While there may not be so much data!
 
-        size_t actual_size_read = payload.length();
+        // size_t actual_size_read = payload.length();
 
         // Take care of the FIN flag
-        if (_stream.eof() && !_fin_flag_set && actual_size_read + _bytes_in_flight < window_size)
+        if (_stream.eof() && !_fin_flag_set && payload.size() + _bytes_in_flight < window_size)
         {
             seg.header().fin = true;
             _fin_flag_set = true;
